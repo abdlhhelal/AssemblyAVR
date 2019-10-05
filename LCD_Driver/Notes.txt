@@ -1,0 +1,41 @@
+PORTC 
+DB7 = PC0
+DB6 = PC1
+DB5 = PC2
+DB4 = PC3
+E   = PC4
+RW  = PC5
+RS  = PC6
+
+RS 	= 0 (Write Instruction Mode)
+RS 	= 1 (Write Data Mode )
+
+RW always = 0 ( Always in Write mode ,Will not read the Busy flag)
+
+
+E   = 0,1 (Starts,End (Enable))
+
+We are working in 4-bit Mode (DB4 to DB7)
+
+LCD is 2-line Display (N=1)
+
+
+Display Position: 00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F
+				  40 41 42 43 44 45 46 47 48 49 4A 4B 4C 4D 4E 4F
+									( NO SHIFTING MODE)
+									
+Address Counter (AC)
+Address Counter(AC) stores DDRAM/CGRAM address, transferred from IR.
+After writing into (reading from) DDRAM/CGRAM, AC is automatically increased (decreased) by 1
+( Automatically Goes to the next writing block in the LCD )
+									
+Character Generator ROM (CGROM)
+The character generator ROM generates 5 x 8 dot character patterns from 8-bit character codes. It
+can generate 240 5 x 8 dot character patterns. ( Characters, Letters and Numbers (Ascii Code) )
+
+Character Generator RAM (CGRAM)
+In the character generator RAM, the user can rewrite character patterns by program. For 5 x 8 dots, eight
+character patterns can be written ( For Typing Special Characters ( Arabic Letters in example ) )
+
+
+									
