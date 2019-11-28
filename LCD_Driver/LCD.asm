@@ -14,7 +14,25 @@
 			
 			LDI		R16,LOW(RAMEND)
 			OUT		SPL,R16
-		
+
+
+main:		CALL 	lcd_init
+			CALL 	delay_2us
+			
+			SBI 	PORTC,RS
+			CBI		PORTC,RW
+			
+			LDI 	R16,0x26 			; RS = 1
+			OUT		PORTC,R16
+			SBI		PORTC,E				;Set E
+			CALL 	Clear_E
+			
+			LDI 	R16,0x24
+			OUT 	PORTC,R16
+			SBI		PORTC,E				;Set E
+			CALL 	Clear_E
+			
+while_1:	JMP 	while_1
 
 
 lcd_init:	LDI 	R16,0x7F			;Setting PORTC (PC0 to PC6) as output
@@ -26,7 +44,7 @@ lcd_init:	LDI 	R16,0x7F			;Setting PORTC (PC0 to PC6) as output
 			
 			
 			CALL 	WRINS
-			LDI 	R16,0x1C			; D4,D5=1 , E still = 1
+			LDI 	R16,0x0C			; D4,D5=1 
 			OUT 	PORTC,R16
 			SBI		PORTC,E				;Set E
 			CALL 	Clear_E 			
@@ -38,13 +56,13 @@ lcd_init:	LDI 	R16,0x7F			;Setting PORTC (PC0 to PC6) as output
 			;Set interface data length to 4 bits, number of display lines to 2 and font to 5x8 dots
 			
 			CALL 	WRINS
-			LDI 	R16,0x14			;D5=1 , E still = 1
+			LDI 	R16,0x04			;D5=1 
 			OUT 	PORTC,R16
 			SBI		PORTC,E				;Set E
 			CALL 	Clear_E
 			
 			CALL 	WRINS
-			LDI 	R16,0x11			;D6=0,D7=1 , E=1
+			LDI 	R16,0x01			;D6=0,D7=1 
 			OUT 	PORTC,R16
 			SBI		PORTC,E				;Set E
 			CALL 	Clear_E
@@ -55,13 +73,13 @@ lcd_init:	LDI 	R16,0x7F			;Setting PORTC (PC0 to PC6) as output
 			;Set interface data length to 4 bits, number of display lines to 2 and font to 5x8 dots
 			
 			CALL 	WRINS
-			LDI 	R16,0x14			;D5=1 , E still = 1
+			LDI 	R16,0x04			;D5=1 
 			OUT 	PORTC,R16
 			SBI		PORTC,E				;Set E
 			CALL 	Clear_E
 			
 			CALL 	WRINS
-			LDI 	R16,0x11			;D6=0,D7=1 , E=1
+			LDI 	R16,0x01			;D6=0,D7=1 
 			OUT 	PORTC,R16
 			SBI		PORTC,E				;Set E
 			CALL 	Clear_E
@@ -72,13 +90,13 @@ lcd_init:	LDI 	R16,0x7F			;Setting PORTC (PC0 to PC6) as output
 			;Turn Cursor off - Display On - Blink off
 			
 			CALL 	WRINS
-			LDI 	R16,0x10			;E=1 
+			LDI 	R16,0x00			 
 			OUT 	PORTC,R16
 			SBI		PORTC,E				;Set E
 			CALL 	Clear_E
 			
 			CALL 	WRINS
-			LDI 	R16,0x13			;D6=1,D7=1 , E=1
+			LDI 	R16,0x03			;D6=1,D7=1 
 			OUT 	PORTC,R16
 			SBI		PORTC,E				;Set E
 			CALL 	Clear_E
@@ -89,13 +107,13 @@ lcd_init:	LDI 	R16,0x7F			;Setting PORTC (PC0 to PC6) as output
 			;Display Clear
 
 			CALL 	WRINS
-			LDI 	R16,0x10 			;E=1
+			LDI 	R16,0x00 			
 			OUT 	PORTC,R16
 			SBI		PORTC,E				;Set E
 			CALL	Clear_E
 			
 			CALL	WRINS
-			LDI 	R16,0x18 			;D4=1 , E=1
+			LDI 	R16,0x08 			;D4=1 
 			OUT 	PORTC,R16
 			SBI		PORTC,E				;Set E
 			CALL 	Clear_E
@@ -106,20 +124,19 @@ lcd_init:	LDI 	R16,0x7F			;Setting PORTC (PC0 to PC6) as output
 			;Entry Mode Set
 			
 			CALL 	WRINS
-			LDI 	R16,0x10 			;E=1
+			LDI 	R16,0x00 			
 			OUT		PORTC,R16
 			SBI		PORTC,E				;Set E
 			CALL	Clear_E
 			
 			CALL	WRINS
-			CALL	R16,0x16			;D5=1, D6=1 , E=1
+			LDI		R16,0x06			;D5=1, D6=1 
 			OUT		PORTC,R16
 			SBI		PORTC,E				;Set E
 			CALL	Clear_E
 
 			CALL delay_1ms 				;wait for > 37 us
-
-
+			RET
 
 
 
@@ -169,16 +186,16 @@ loop3:		DEC		R18
 			
 delay_5ms:	LDI		R16,5
 
-loop1:		LDI 	R17,18 
+loop4:		LDI 	R17,18 
 
-loop2:		LDI 	R18,147 
+loop5:		LDI 	R18,147 
    
 
-loop3:		DEC		R18    
-			BRNE    loop3  
+loop6:		DEC		R18    
+			BRNE    loop6  
 
 			DEC     R17    
-			BRNE    loop2  
+			BRNE    loop5  
 
 			DEC     R16   
 			NOP
@@ -186,22 +203,22 @@ loop3:		DEC		R18
 			NOP
 			NOP
 			NOP 	
-			BRNE    loop1  
+			BRNE    loop4 
 			RET
 			
 			
 delay_50ms:	LDI		R16,50
 
-loop1:		LDI 	R17,18 
+loop7:		LDI 	R17,18 
 
-loop2:		LDI 	R18,147 
+loop8:		LDI 	R18,147 
    
 
-loop3:		DEC		R18    
-			BRNE    loop3  
+loop9:		DEC		R18    
+			BRNE    loop9  
 
 			DEC     R17    
-			BRNE    loop2  
+			BRNE    loop8  
 
 			DEC     R16   
 			NOP
@@ -209,20 +226,20 @@ loop3:		DEC		R18
 			NOP
 			NOP
 			NOP 	
-			BRNE    loop1  
+			BRNE    loop7  
 			RET
 			
 			
 			
 delay_1us:	LDI		R16,1
 
-loop1:		DEC     R16   
+loop10:		DEC     R16   
 			NOP
 			NOP
 			NOP
 			NOP
 			NOP	
-			BRNE    loop1 
+			BRNE    loop10 
 			RET			
 		
 		
@@ -230,11 +247,11 @@ loop1:		DEC     R16
 		
 delay_2us:	LDI		R16,2
 
-loop1:		DEC     R16   
+loop11:		DEC     R16   
 			NOP
 			NOP
 			NOP
 			NOP
 			NOP	
-			BRNE    loop1 
+			BRNE    loop11 
 			RET			
