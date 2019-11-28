@@ -28,6 +28,7 @@ lcd_init:	LDI 	R16,0x7F			;Setting PORTC (PC0 to PC6) as output
 			CALL 	WRINS
 			LDI 	R16,0x1C			; D4,D5=1 , E still = 1
 			OUT 	PORTC,R16
+			SBI		PORTC,E				;Set E
 			CALL 	Clear_E 			
 			
 			CALL 	delay_1ms			;wait for > 37 us
@@ -39,11 +40,13 @@ lcd_init:	LDI 	R16,0x7F			;Setting PORTC (PC0 to PC6) as output
 			CALL 	WRINS
 			LDI 	R16,0x14			;D5=1 , E still = 1
 			OUT 	PORTC,R16
+			SBI		PORTC,E				;Set E
 			CALL 	Clear_E
 			
 			CALL 	WRINS
 			LDI 	R16,0x11			;D6=0,D7=1 , E=1
 			OUT 	PORTC,R16
+			SBI		PORTC,E				;Set E
 			CALL 	Clear_E
 			
 			CALL 	delay_1ms			;wait for > 37 us
@@ -54,11 +57,13 @@ lcd_init:	LDI 	R16,0x7F			;Setting PORTC (PC0 to PC6) as output
 			CALL 	WRINS
 			LDI 	R16,0x14			;D5=1 , E still = 1
 			OUT 	PORTC,R16
+			SBI		PORTC,E				;Set E
 			CALL 	Clear_E
 			
 			CALL 	WRINS
 			LDI 	R16,0x11			;D6=0,D7=1 , E=1
 			OUT 	PORTC,R16
+			SBI		PORTC,E				;Set E
 			CALL 	Clear_E
 			
 			CALL 	delay_1ms			;wait for > 37 us
@@ -69,11 +74,13 @@ lcd_init:	LDI 	R16,0x7F			;Setting PORTC (PC0 to PC6) as output
 			CALL 	WRINS
 			LDI 	R16,0x10			;E=1 
 			OUT 	PORTC,R16
+			SBI		PORTC,E				;Set E
 			CALL 	Clear_E
 			
 			CALL 	WRINS
 			LDI 	R16,0x13			;D6=1,D7=1 , E=1
 			OUT 	PORTC,R16
+			SBI		PORTC,E				;Set E
 			CALL 	Clear_E
 			
 			CALL 	delay_1ms			;wait for > 37 us
@@ -84,11 +91,13 @@ lcd_init:	LDI 	R16,0x7F			;Setting PORTC (PC0 to PC6) as output
 			CALL 	WRINS
 			LDI 	R16,0x10 			;E=1
 			OUT 	PORTC,R16
+			SBI		PORTC,E				;Set E
 			CALL	Clear_E
 			
 			CALL	WRINS
 			LDI 	R16,0x18 			;D4=1 , E=1
 			OUT 	PORTC,R16
+			SBI		PORTC,E				;Set E
 			CALL 	Clear_E
 			
 			CALL 	delay_5ms 			;Wait time >1.52mS
@@ -99,20 +108,16 @@ lcd_init:	LDI 	R16,0x7F			;Setting PORTC (PC0 to PC6) as output
 			CALL 	WRINS
 			LDI 	R16,0x10 			;E=1
 			OUT		PORTC,R16
+			SBI		PORTC,E				;Set E
 			CALL	Clear_E
 			
 			CALL	WRINS
 			CALL	R16,0x16			;D5=1, D6=1 , E=1
 			OUT		PORTC,R16
+			SBI		PORTC,E				;Set E
 			CALL	Clear_E
 
 			CALL delay_1ms 				;wait for > 37 us
-
-
-
-
-
-
 
 
 
@@ -124,7 +129,7 @@ lcd_init:	LDI 	R16,0x7F			;Setting PORTC (PC0 to PC6) as output
 			
 WRINS:		CBI		PORTC,RS			;Clear RS
 			CBI		PORTC,RW			;Clear RW
-			SBI		PORTC,E				;Set E
+			RET
 			
 			
 Clear_E: 	CALL 	delay_1us			;Minimum time for Enable Pulse Width Tpw
@@ -132,28 +137,11 @@ Clear_E: 	CALL 	delay_1us			;Minimum time for Enable Pulse Width Tpw
 			CBI 	PORTC,E 			;Clear E
 			
 			CALL	delay_2us 			;Minimum time between two consecutive EN settings is 1200ns		
+			RET
 			
 			
 			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
+		
 			
 			
 delay_1ms:	LDI		R16,1
@@ -176,7 +164,6 @@ loop3:		DEC		R18
 			NOP
 			NOP 	
 			BRNE    loop1  
-
 			RET			
 			
 			
@@ -200,7 +187,6 @@ loop3:		DEC		R18
 			NOP
 			NOP 	
 			BRNE    loop1  
-
 			RET
 			
 			
@@ -224,7 +210,6 @@ loop3:		DEC		R18
 			NOP
 			NOP 	
 			BRNE    loop1  
-
 			RET
 			
 			
@@ -238,7 +223,6 @@ loop1:		DEC     R16
 			NOP
 			NOP	
 			BRNE    loop1 
-
 			RET			
 		
 		
@@ -253,5 +237,4 @@ loop1:		DEC     R16
 			NOP
 			NOP	
 			BRNE    loop1 
-
 			RET			
