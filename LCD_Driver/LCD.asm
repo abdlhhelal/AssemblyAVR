@@ -22,12 +22,103 @@ main:		CALL 	lcd_init
 			SBI 	PORTC,RS
 			CBI		PORTC,RW
 			
-			LDI 	R16,0x26 			; RS = 1
+			LDI 	R16,0x46 			; RS = 1
 			OUT		PORTC,R16
 			SBI		PORTC,E				;Set E
 			CALL 	Clear_E
 			
-			LDI 	R16,0x24
+			LDI 	R16,0x48			; RS = 1
+			OUT 	PORTC,R16
+			SBI		PORTC,E				;Set E
+			CALL 	Clear_E
+			
+			CALL 	delay_2us
+			
+			SBI 	PORTC,RS
+			CBI		PORTC,RW
+			
+			LDI 	R16,0x46 			; RS = 1
+			OUT		PORTC,R16
+			SBI		PORTC,E				;Set E
+			CALL 	Clear_E
+			
+			LDI 	R16,0x44			; RS = 1
+			OUT 	PORTC,R16
+			SBI		PORTC,E				;Set E
+			CALL 	Clear_E
+			
+			
+			CALL 	delay_2us
+			
+			SBI 	PORTC,RS
+			CBI		PORTC,RW
+			
+			LDI 	R16,0x42 			; RS = 1
+			OUT		PORTC,R16
+			SBI		PORTC,E				;Set E
+			CALL 	Clear_E
+			
+			LDI 	R16,0x41			; RS = 1
+			OUT 	PORTC,R16
+			SBI		PORTC,E				;Set E
+			CALL 	Clear_E
+			
+			CALL 	delay_2us
+			
+			SBI 	PORTC,RS
+			CBI		PORTC,RW
+			
+			LDI 	R16,0x46 			; RS = 1
+			OUT		PORTC,R16
+			SBI		PORTC,E				;Set E
+			CALL 	Clear_E
+			
+			LDI 	R16,0x4A			; RS = 1
+			OUT 	PORTC,R16
+			SBI		PORTC,E				;Set E
+			CALL 	Clear_E
+			
+			CALL 	delay_2us
+			
+			SBI 	PORTC,RS
+			CBI		PORTC,RW
+			
+			LDI 	R16,0x46 			; RS = 1
+			OUT		PORTC,R16
+			SBI		PORTC,E				;Set E
+			CALL 	Clear_E
+			
+			LDI 	R16,0x43			; RS = 1
+			OUT 	PORTC,R16
+			SBI		PORTC,E				;Set E
+			CALL 	Clear_E
+
+			CALL 	delay_2us
+			
+			SBI 	PORTC,RS
+			CBI		PORTC,RW
+			
+			LDI 	R16,0x46 			; RS = 1
+			OUT		PORTC,R16
+			SBI		PORTC,E				;Set E
+			CALL 	Clear_E
+			
+			LDI 	R16,0x48			; RS = 1
+			OUT 	PORTC,R16
+			SBI		PORTC,E				;Set E
+			CALL 	Clear_E
+						
+			CALL 	delay_2us
+			
+			SBI 	PORTC,RS
+			CBI		PORTC,RW
+			
+			LDI 	R16,0x46 			; RS = 1
+			OUT		PORTC,R16
+			SBI		PORTC,E				;Set E
+			CALL 	Clear_E
+			
+			LDI 	R16,0x43			; RS = 1
 			OUT 	PORTC,R16
 			SBI		PORTC,E				;Set E
 			CALL 	Clear_E
