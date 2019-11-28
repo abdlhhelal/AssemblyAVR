@@ -17,7 +17,7 @@
 
 
 main:		CALL 	lcd_init
-			CALL 	delay_2us
+			CALL 	delay_1ms
 			
 			SBI 	PORTC,RS
 			CBI		PORTC,RW
@@ -32,7 +32,7 @@ main:		CALL 	lcd_init
 			SBI		PORTC,E				;Set E
 			CALL 	Clear_E
 			
-			CALL 	delay_2us
+			CALL 	delay_1ms
 			
 			SBI 	PORTC,RS
 			CBI		PORTC,RW
@@ -48,7 +48,7 @@ main:		CALL 	lcd_init
 			CALL 	Clear_E
 			
 			
-			CALL 	delay_2us
+			CALL 	delay_1ms
 			
 			SBI 	PORTC,RS
 			CBI		PORTC,RW
@@ -63,7 +63,7 @@ main:		CALL 	lcd_init
 			SBI		PORTC,E				;Set E
 			CALL 	Clear_E
 			
-			CALL 	delay_2us
+			CALL 	delay_1ms
 			
 			SBI 	PORTC,RS
 			CBI		PORTC,RW
@@ -78,7 +78,7 @@ main:		CALL 	lcd_init
 			SBI		PORTC,E				;Set E
 			CALL 	Clear_E
 			
-			CALL 	delay_2us
+			CALL 	delay_1ms
 			
 			SBI 	PORTC,RS
 			CBI		PORTC,RW
@@ -93,7 +93,7 @@ main:		CALL 	lcd_init
 			SBI		PORTC,E				;Set E
 			CALL 	Clear_E
 
-			CALL 	delay_2us
+			CALL 	delay_1ms
 			
 			SBI 	PORTC,RS
 			CBI		PORTC,RW
@@ -108,7 +108,7 @@ main:		CALL 	lcd_init
 			SBI		PORTC,E				;Set E
 			CALL 	Clear_E
 						
-			CALL 	delay_2us
+			CALL 	delay_1ms
 			
 			SBI 	PORTC,RS
 			CBI		PORTC,RW
