@@ -18,30 +18,17 @@
 
 main:		CALL 	lcd_init
 			CALL 	delay_1ms
-		
-		
 
-		
-			SBI 	PORTC,RS
-			CBI		PORTC,RW
-			LDI 	R16,0x61
+			LDI 	R16,'a'
+			CALL 	Write_Char	
+
+			LDI 	R16,'b'
 			CALL 	Write_Char
-			
-		;	LDI 	R16,0x46 			; RS = 1
-		;	OUT		PORTC,R16
-		;	SBI		PORTC,E				;Set E
-		;	CALL 	Clear_E
-		;	
-		;	LDI 	R16,0x48			; RS = 1
-		;	OUT 	PORTC,R16
-			SBI		PORTC,E				;Set E
-			CALL 	Clear_E
-			
-			CALL 	delay_1ms
+
 			
 		;	SBI 	PORTC,RS
 		;	CBI		PORTC,RW
-		;	
+		;	CALL 	delay_1ms
 		;	LDI 	R16,0x46 			; RS = 1
 		;	OUT		PORTC,R16
 		;	SBI		PORTC,E				;Set E
@@ -50,83 +37,10 @@ main:		CALL 	lcd_init
 		;	LDI 	R16,0x44			; RS = 1
 		;	OUT 	PORTC,R16
 		;	SBI		PORTC,E				;Set E
-		;	CALL 	Clear_E
-		;	
-		;	
+		;	CALL 	Clear_E	
 		;	CALL 	delay_1ms
-		;	
-		;	SBI 	PORTC,RS
-		;	CBI		PORTC,RW
-		;	
-		;	LDI 	R16,0x42 			; RS = 1
-		;	OUT		PORTC,R16
-		;	SBI		PORTC,E				;Set E
-		;	CALL 	Clear_E
-		;	
-		;	LDI 	R16,0x41			; RS = 1
-		;	OUT 	PORTC,R16
-		;	SBI		PORTC,E				;Set E
-		;	CALL 	Clear_E
-		;	
-		;	CALL 	delay_1ms
-		;	
-		;	SBI 	PORTC,RS
-		;	CBI		PORTC,RW
-		;	
-		;	LDI 	R16,0x46 			; RS = 1
-		;	OUT		PORTC,R16
-		;	SBI		PORTC,E				;Set E
-		;	CALL 	Clear_E
-		;	
-		;	LDI 	R16,0x4A			; RS = 1
-		;	OUT 	PORTC,R16
-		;	SBI		PORTC,E				;Set E
-		;	CALL 	Clear_E
-		;	
-		;	CALL 	delay_1ms
-		;	
-		;	SBI 	PORTC,RS
-		;	CBI		PORTC,RW
-		;	
-		;	LDI 	R16,0x46 			; RS = 1
-		;	OUT		PORTC,R16
-		;	SBI		PORTC,E				;Set E
-		;	CALL 	Clear_E
-		;	
-		;	LDI 	R16,0x43			; RS = 1
-		;	OUT 	PORTC,R16
-		;	SBI		PORTC,E				;Set E
-		;	CALL 	Clear_E
-		;
-		;	CALL 	delay_1ms
-		;	
-		;	SBI 	PORTC,RS
-		;	CBI		PORTC,RW
-		;	
-		;	LDI 	R16,0x46 			; RS = 1
-		;	OUT		PORTC,R16
-		;	SBI		PORTC,E				;Set E
-		;	CALL 	Clear_E
-		;	
-		;	LDI 	R16,0x48			; RS = 1
-		;	OUT 	PORTC,R16
-		;	SBI		PORTC,E				;Set E
-		;	CALL 	Clear_E
-		;				
-		;	CALL 	delay_1ms
-		;	
-		;	SBI 	PORTC,RS
-		;	CBI		PORTC,RW
-		;	
-		;	LDI 	R16,0x46 			; RS = 1
-		;	OUT		PORTC,R16
-		;	SBI		PORTC,E				;Set E
-		;	CALL 	Clear_E
-		;	
-		;	LDI 	R16,0x43			; RS = 1
-		;	OUT 	PORTC,R16
-		;	SBI		PORTC,E				;Set E
-		;	CALL 	Clear_E
+	
+
 			
 while_1:	JMP 	while_1
 
@@ -389,14 +303,14 @@ Write_Char:
 			;PORTC = R16
 			;SET E , CALL FUNC CLEAR_E
 			;pop R16
-			
+			CALL 	delay_1ms
 			PUSH  	R16
 			LSR	 	R16
 			LSR	 	R16
 			LSR	 	R16
 			LSR	 	R16
 			CALL 	rev_bit
-			ANDI 	R24,0x40
+			ORI 	R24,0x40
 			OUT 	PORTC,R24
 			SBI		PORTC,E				;Set E
 			CALL 	Clear_E
@@ -406,12 +320,12 @@ Write_Char:
 			PUSH  	R16
 			ANDI 	R16,0x0F
 			CALL 	rev_bit
-			ANDI 	R24,0x40
+			ORI		R24,0x40
 			OUT 	PORTC,R24
 			SBI		PORTC,E				;Set E
 			CALL 	Clear_E
 			pop 	R16
-
+			CALL 	delay_1ms
 			RET
 			
 
@@ -433,7 +347,7 @@ rev_bit: ;read 4 bits in lower nibble of R16 and return the reverse in Lower nib
 	ANDI	R16,0x0A
 	LSR 	R16
 	MOV 	R18,R16 ; y1
-	AND 	R18,R17
+	OR  	R18,R17
 	push  	R18
 	
 	ANDI 	R18,0x03
@@ -446,7 +360,7 @@ rev_bit: ;read 4 bits in lower nibble of R16 and return the reverse in Lower nib
 	LSR 	R18
 	LSR 	R18 ; y1
 	
-	AND 	R18,R17 ; result = y0&y1
+	OR 		R18,R17 ; result = y0&y1
 	MOV 	R24,R18
 
 	pop 	R18
