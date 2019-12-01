@@ -18,110 +18,115 @@
 
 main:		CALL 	lcd_init
 			CALL 	delay_1ms
-			
-			SBI 	PORTC,RS
-			CBI		PORTC,RW
-			
-			LDI 	R16,0x46 			; RS = 1
-			OUT		PORTC,R16
-			SBI		PORTC,E				;Set E
-			CALL 	Clear_E
-			
-			LDI 	R16,0x48			; RS = 1
-			OUT 	PORTC,R16
-			SBI		PORTC,E				;Set E
-			CALL 	Clear_E
-			
-			CALL 	delay_1ms
-			
-			SBI 	PORTC,RS
-			CBI		PORTC,RW
-			
-			LDI 	R16,0x46 			; RS = 1
-			OUT		PORTC,R16
-			SBI		PORTC,E				;Set E
-			CALL 	Clear_E
-			
-			LDI 	R16,0x44			; RS = 1
-			OUT 	PORTC,R16
-			SBI		PORTC,E				;Set E
-			CALL 	Clear_E
-			
-			
-			CALL 	delay_1ms
-			
-			SBI 	PORTC,RS
-			CBI		PORTC,RW
-			
-			LDI 	R16,0x42 			; RS = 1
-			OUT		PORTC,R16
-			SBI		PORTC,E				;Set E
-			CALL 	Clear_E
-			
-			LDI 	R16,0x41			; RS = 1
-			OUT 	PORTC,R16
-			SBI		PORTC,E				;Set E
-			CALL 	Clear_E
-			
-			CALL 	delay_1ms
-			
-			SBI 	PORTC,RS
-			CBI		PORTC,RW
-			
-			LDI 	R16,0x46 			; RS = 1
-			OUT		PORTC,R16
-			SBI		PORTC,E				;Set E
-			CALL 	Clear_E
-			
-			LDI 	R16,0x4A			; RS = 1
-			OUT 	PORTC,R16
-			SBI		PORTC,E				;Set E
-			CALL 	Clear_E
-			
-			CALL 	delay_1ms
-			
-			SBI 	PORTC,RS
-			CBI		PORTC,RW
-			
-			LDI 	R16,0x46 			; RS = 1
-			OUT		PORTC,R16
-			SBI		PORTC,E				;Set E
-			CALL 	Clear_E
-			
-			LDI 	R16,0x43			; RS = 1
-			OUT 	PORTC,R16
-			SBI		PORTC,E				;Set E
-			CALL 	Clear_E
+		
+		
 
-			CALL 	delay_1ms
-			
+		
 			SBI 	PORTC,RS
 			CBI		PORTC,RW
+			LDI 	R16,0x61
+			CALL 	Write_Char
 			
-			LDI 	R16,0x46 			; RS = 1
-			OUT		PORTC,R16
+		;	LDI 	R16,0x46 			; RS = 1
+		;	OUT		PORTC,R16
+		;	SBI		PORTC,E				;Set E
+		;	CALL 	Clear_E
+		;	
+		;	LDI 	R16,0x48			; RS = 1
+		;	OUT 	PORTC,R16
 			SBI		PORTC,E				;Set E
 			CALL 	Clear_E
 			
-			LDI 	R16,0x48			; RS = 1
-			OUT 	PORTC,R16
-			SBI		PORTC,E				;Set E
-			CALL 	Clear_E
-						
 			CALL 	delay_1ms
 			
-			SBI 	PORTC,RS
-			CBI		PORTC,RW
-			
-			LDI 	R16,0x46 			; RS = 1
-			OUT		PORTC,R16
-			SBI		PORTC,E				;Set E
-			CALL 	Clear_E
-			
-			LDI 	R16,0x43			; RS = 1
-			OUT 	PORTC,R16
-			SBI		PORTC,E				;Set E
-			CALL 	Clear_E
+		;	SBI 	PORTC,RS
+		;	CBI		PORTC,RW
+		;	
+		;	LDI 	R16,0x46 			; RS = 1
+		;	OUT		PORTC,R16
+		;	SBI		PORTC,E				;Set E
+		;	CALL 	Clear_E
+		;	
+		;	LDI 	R16,0x44			; RS = 1
+		;	OUT 	PORTC,R16
+		;	SBI		PORTC,E				;Set E
+		;	CALL 	Clear_E
+		;	
+		;	
+		;	CALL 	delay_1ms
+		;	
+		;	SBI 	PORTC,RS
+		;	CBI		PORTC,RW
+		;	
+		;	LDI 	R16,0x42 			; RS = 1
+		;	OUT		PORTC,R16
+		;	SBI		PORTC,E				;Set E
+		;	CALL 	Clear_E
+		;	
+		;	LDI 	R16,0x41			; RS = 1
+		;	OUT 	PORTC,R16
+		;	SBI		PORTC,E				;Set E
+		;	CALL 	Clear_E
+		;	
+		;	CALL 	delay_1ms
+		;	
+		;	SBI 	PORTC,RS
+		;	CBI		PORTC,RW
+		;	
+		;	LDI 	R16,0x46 			; RS = 1
+		;	OUT		PORTC,R16
+		;	SBI		PORTC,E				;Set E
+		;	CALL 	Clear_E
+		;	
+		;	LDI 	R16,0x4A			; RS = 1
+		;	OUT 	PORTC,R16
+		;	SBI		PORTC,E				;Set E
+		;	CALL 	Clear_E
+		;	
+		;	CALL 	delay_1ms
+		;	
+		;	SBI 	PORTC,RS
+		;	CBI		PORTC,RW
+		;	
+		;	LDI 	R16,0x46 			; RS = 1
+		;	OUT		PORTC,R16
+		;	SBI		PORTC,E				;Set E
+		;	CALL 	Clear_E
+		;	
+		;	LDI 	R16,0x43			; RS = 1
+		;	OUT 	PORTC,R16
+		;	SBI		PORTC,E				;Set E
+		;	CALL 	Clear_E
+		;
+		;	CALL 	delay_1ms
+		;	
+		;	SBI 	PORTC,RS
+		;	CBI		PORTC,RW
+		;	
+		;	LDI 	R16,0x46 			; RS = 1
+		;	OUT		PORTC,R16
+		;	SBI		PORTC,E				;Set E
+		;	CALL 	Clear_E
+		;	
+		;	LDI 	R16,0x48			; RS = 1
+		;	OUT 	PORTC,R16
+		;	SBI		PORTC,E				;Set E
+		;	CALL 	Clear_E
+		;				
+		;	CALL 	delay_1ms
+		;	
+		;	SBI 	PORTC,RS
+		;	CBI		PORTC,RW
+		;	
+		;	LDI 	R16,0x46 			; RS = 1
+		;	OUT		PORTC,R16
+		;	SBI		PORTC,E				;Set E
+		;	CALL 	Clear_E
+		;	
+		;	LDI 	R16,0x43			; RS = 1
+		;	OUT 	PORTC,R16
+		;	SBI		PORTC,E				;Set E
+		;	CALL 	Clear_E
 			
 while_1:	JMP 	while_1
 
@@ -346,3 +351,131 @@ loop11:		DEC     R16
 			NOP	
 			BRNE    loop11 
 			RET			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			;This subroutine reads the character from R16
+			
+Write_Char: 
+			
+			;push R16
+
+			;R16=0x61
+			;shifting R16 4-bit right
+			;reverse bits 
+			;anding R16 with 0x40 ||| set RS |||
+			;
+			;PORTC = R16
+			;SET E , CALL FUNC CLEAR_E
+			;pop R16
+			
+			PUSH  	R16
+			LSR	 	R16
+			LSR	 	R16
+			LSR	 	R16
+			LSR	 	R16
+			CALL 	rev_bit
+			ANDI 	R24,0x40
+			OUT 	PORTC,R24
+			SBI		PORTC,E				;Set E
+			CALL 	Clear_E
+			pop 	R16
+
+
+			PUSH  	R16
+			ANDI 	R16,0x0F
+			CALL 	rev_bit
+			ANDI 	R24,0x40
+			OUT 	PORTC,R24
+			SBI		PORTC,E				;Set E
+			CALL 	Clear_E
+			pop 	R16
+
+			RET
+			
+
+
+rev_bit: ;read 4 bits in lower nibble of R16 and return the reverse in Lower nibble of R24
+
+	push 	R16
+	push 	R17
+	push 	R18
+	
+	push 	R16
+	
+	
+	ANDI	R16,0x05
+	LSL 	R16
+	MOV 	R17,R16   ;y0
+	pop 	R16	
+	
+	ANDI	R16,0x0A
+	LSR 	R16
+	MOV 	R18,R16 ; y1
+	AND 	R18,R17
+	push  	R18
+	
+	ANDI 	R18,0x03
+	LSL 	R18
+	LSL 	R18
+	MOV 	R17,R18 ; y0
+	pop 	R18
+	
+	ANDI 	R18,0x0C
+	LSR 	R18
+	LSR 	R18 ; y1
+	
+	AND 	R18,R17 ; result = y0&y1
+	MOV 	R24,R18
+
+	pop 	R18
+	pop 	R17
+	pop 	R16
+	
+	RET
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+				
