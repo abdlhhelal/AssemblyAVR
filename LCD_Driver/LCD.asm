@@ -24,7 +24,21 @@ main:		CALL 	lcd_init
 
 			LDI 	R16,'b'
 			CALL 	Write_Char
-
+			
+			LDI 	R16,'H'
+			CALL 	Write_Char
+			
+			LDI 	R16,'e'
+			CALL 	Write_Char
+			
+			LDI		R16,'l'
+			CALL 	Write_Char
+			
+			LDI 	R16,0x61        ; 'a' in ascii = 0x61 
+			CALL 	Write_Char	
+		
+			LDI		R16,'l'
+			CALL 	Write_Char
 			
 		;	SBI 	PORTC,RS
 		;	CBI		PORTC,RW
@@ -167,128 +181,7 @@ Clear_E: 	CALL 	delay_1us			;Minimum time for Enable Pulse Width Tpw
 			RET
 			
 			
-			
-		
-			
-			
-delay_1ms:	LDI		R16,1
 
-loop1:		LDI 	R17,18 
-
-loop2:		LDI 	R18,147 
-   
-
-loop3:		DEC		R18    
-			BRNE    loop3  
-
-			DEC     R17    
-			BRNE    loop2  
-
-			DEC     R16   
-			NOP
-			NOP
-			NOP
-			NOP
-			NOP 	
-			BRNE    loop1  
-			RET			
-			
-			
-delay_5ms:	LDI		R16,5
-
-loop4:		LDI 	R17,18 
-
-loop5:		LDI 	R18,147 
-   
-
-loop6:		DEC		R18    
-			BRNE    loop6  
-
-			DEC     R17    
-			BRNE    loop5  
-
-			DEC     R16   
-			NOP
-			NOP
-			NOP
-			NOP
-			NOP 	
-			BRNE    loop4 
-			RET
-			
-			
-delay_50ms:	LDI		R16,50
-
-loop7:		LDI 	R17,18 
-
-loop8:		LDI 	R18,147 
-   
-
-loop9:		DEC		R18    
-			BRNE    loop9  
-
-			DEC     R17    
-			BRNE    loop8  
-
-			DEC     R16   
-			NOP
-			NOP
-			NOP
-			NOP
-			NOP 	
-			BRNE    loop7  
-			RET
-			
-			
-			
-delay_1us:	LDI		R16,1
-
-loop10:		DEC     R16   
-			NOP
-			NOP
-			NOP
-			NOP
-			NOP	
-			BRNE    loop10 
-			RET			
-		
-		
-		
-		
-delay_2us:	LDI		R16,2
-
-loop11:		DEC     R16   
-			NOP
-			NOP
-			NOP
-			NOP
-			NOP	
-			BRNE    loop11 
-			RET			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
 			;This subroutine reads the character from R16
 			
 Write_Char: 
@@ -326,52 +219,215 @@ Write_Char:
 			CALL 	Clear_E
 			pop 	R16
 			CALL 	delay_1ms
-			RET
-			
+			RET	
 
 
 rev_bit: ;read 4 bits in lower nibble of R16 and return the reverse in Lower nibble of R24
 
-	push 	R16
-	push 	R17
-	push 	R18
-	
-	push 	R16
-	
-	
-	ANDI	R16,0x05
-	LSL 	R16
-	MOV 	R17,R16   ;y0
-	pop 	R16	
-	
-	ANDI	R16,0x0A
-	LSR 	R16
-	MOV 	R18,R16 ; y1
-	OR  	R18,R17
-	push  	R18
-	
-	ANDI 	R18,0x03
-	LSL 	R18
-	LSL 	R18
-	MOV 	R17,R18 ; y0
-	pop 	R18
-	
-	ANDI 	R18,0x0C
-	LSR 	R18
-	LSR 	R18 ; y1
-	
-	OR 		R18,R17 ; result = y0&y1
-	MOV 	R24,R18
+			push 	R16
+			push 	R17
+			push 	R18
+			
+			push 	R16
+			
+			
+			ANDI	R16,0x05
+			LSL 	R16
+			MOV 	R17,R16   ;y0
+			pop 	R16	
+			
+			ANDI	R16,0x0A
+			LSR 	R16
+			MOV 	R18,R16 ; y1
+			OR  	R18,R17
+			push  	R18
+			
+			ANDI 	R18,0x03
+			LSL 	R18
+			LSL 	R18
+			MOV 	R17,R18 ; y0
+			pop 	R18
+			
+			ANDI 	R18,0x0C
+			LSR 	R18
+			LSR 	R18 ; y1
+			
+			OR 		R18,R17 ; result = y0&y1
+			MOV 	R24,R18
+		
+			pop 	R18
+			pop 	R17
+			pop 	R16
+			
+			RET
+		
+		
+		
+delay_1ms:	push	R16
+			push	R17
+			push	R18
+			LDI		R16,1
 
-	pop 	R18
-	pop 	R17
-	pop 	R16
-	
-	RET
+loop1:		LDI 	R17,18 
+
+loop2:		LDI 	R18,147 
+   
+
+loop3:		DEC		R18    
+			BRNE    loop3  
+
+			DEC     R17    
+			BRNE    loop2  
+
+			DEC     R16   
+			NOP
+			NOP
+			NOP
+			NOP
+			NOP 	
+			BRNE    loop1  
+			
+
+
+			pop		R18
+			pop		R17
+			pop		R16
+			RET			
+			
+			
+delay_5ms:	push	R16
+			push	R17
+			push	R18
+
+			LDI		R16,5
+
+loop4:		LDI 	R17,18 
+
+loop5:		LDI 	R18,147 
+   
+
+loop6:		DEC		R18    
+			BRNE    loop6  
+
+			DEC     R17    
+			BRNE    loop5  
+
+			DEC     R16   
+			NOP
+			NOP
+			NOP
+			NOP
+			NOP 	
+			BRNE    loop4 
 
 
 
+			pop		R18
+			pop		R17
+			pop		R16
+			RET
+			
+			
+delay_50ms:	push	R16
+			push	R17
+			push	R18
 
+
+			LDI		R16,50
+
+loop7:		LDI 	R17,18 
+
+loop8:		LDI 	R18,147 
+   
+
+loop9:		DEC		R18    
+			BRNE    loop9  
+
+			DEC     R17    
+			BRNE    loop8  
+
+			DEC     R16   
+			NOP
+			NOP
+			NOP
+			NOP
+			NOP 	
+			BRNE    loop7  
+
+			pop		R18
+			pop		R17
+			pop		R16
+			RET
+			
+			
+			
+delay_1us:	push	R16
+			push	R17
+			push	R18
+
+
+
+			LDI		R16,1
+
+loop10:		DEC     R16   
+			NOP
+			NOP
+			NOP
+			NOP
+			NOP	
+			BRNE    loop10 
+
+
+			pop		R18
+			pop		R17
+			pop		R16
+			RET			
+		
+		
+		
+		
+delay_2us:	push	R16
+			push	R17
+			push	R18
+
+
+			LDI		R16,2
+
+loop11:		DEC     R16   
+			NOP
+			NOP
+			NOP
+			NOP
+			NOP	
+			BRNE    loop11 
+			pop		R18
+			pop		R17
+			pop		R16
+			RET			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 
 
 
