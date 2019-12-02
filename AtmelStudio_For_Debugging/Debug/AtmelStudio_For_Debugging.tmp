@@ -1,0 +1,49 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.2.7</VERSION>
+ <DEVICE>"ATmega32"</DEVICE>
+ <WORKING_DIR>C:\Users\abHelal\Desktop\AssemblyAVR\AtmelStudio_For_Debugging\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\avrasm\inc</DIR>
+  <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
+  <DIR></DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>C:\Users\abHelal\Desktop\AssemblyAVR\AtmelStudio_For_Debugging\main.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\avrasm\inc\m32def.inc</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>C:\Users\abHelal\Desktop\AssemblyAVR\AtmelStudio_For_Debugging\Debug\AtmelStudio_For_Debugging.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>AtmelStudio_For_Debugging.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>AtmelStudio_For_Debugging.map</FILE>
+  <FILE>AtmelStudio_For_Debugging.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <main><FILE>C:\Users\abHelal\Desktop\AssemblyAVR\AtmelStudio_For_Debugging\main.asm</FILE><LINE>19</LINE></main>
+  <lcd_init><FILE>C:\Users\abHelal\Desktop\AssemblyAVR\AtmelStudio_For_Debugging\main.asm</FILE><LINE>62</LINE></lcd_init>
+  <delay_1ms><FILE>C:\Users\abHelal\Desktop\AssemblyAVR\AtmelStudio_For_Debugging\main.asm</FILE><LINE>266</LINE></delay_1ms>
+  <Write_Char><FILE>C:\Users\abHelal\Desktop\AssemblyAVR\AtmelStudio_For_Debugging\main.asm</FILE><LINE>187</LINE></Write_Char>
+  <while_1><FILE>C:\Users\abHelal\Desktop\AssemblyAVR\AtmelStudio_For_Debugging\main.asm</FILE><LINE>59</LINE></while_1>
+  <delay_50ms><FILE>C:\Users\abHelal\Desktop\AssemblyAVR\AtmelStudio_For_Debugging\main.asm</FILE><LINE>331</LINE></delay_50ms>
+  <WRINS><FILE>C:\Users\abHelal\Desktop\AssemblyAVR\AtmelStudio_For_Debugging\main.asm</FILE><LINE>171</LINE></WRINS>
+  <Clear_E><FILE>C:\Users\abHelal\Desktop\AssemblyAVR\AtmelStudio_For_Debugging\main.asm</FILE><LINE>176</LINE></Clear_E>
+  <delay_5ms><FILE>C:\Users\abHelal\Desktop\AssemblyAVR\AtmelStudio_For_Debugging\main.asm</FILE><LINE>298</LINE></delay_5ms>
+  <delay_1us><FILE>C:\Users\abHelal\Desktop\AssemblyAVR\AtmelStudio_For_Debugging\main.asm</FILE><LINE>364</LINE></delay_1us>
+  <delay_2us><FILE>C:\Users\abHelal\Desktop\AssemblyAVR\AtmelStudio_For_Debugging\main.asm</FILE><LINE>389</LINE></delay_2us>
+  <rev_bit><FILE>C:\Users\abHelal\Desktop\AssemblyAVR\AtmelStudio_For_Debugging\main.asm</FILE><LINE>225</LINE></rev_bit>
+  <loop1><FILE>C:\Users\abHelal\Desktop\AssemblyAVR\AtmelStudio_For_Debugging\main.asm</FILE><LINE>271</LINE></loop1>
+  <loop2><FILE>C:\Users\abHelal\Desktop\AssemblyAVR\AtmelStudio_For_Debugging\main.asm</FILE><LINE>273</LINE></loop2>
+  <loop3><FILE>C:\Users\abHelal\Desktop\AssemblyAVR\AtmelStudio_For_Debugging\main.asm</FILE><LINE>276</LINE></loop3>
+  <loop4><FILE>C:\Users\abHelal\Desktop\AssemblyAVR\AtmelStudio_For_Debugging\main.asm</FILE><LINE>304</LINE></loop4>
+  <loop5><FILE>C:\Users\abHelal\Desktop\AssemblyAVR\AtmelStudio_For_Debugging\main.asm</FILE><LINE>306</LINE></loop5>
+  <loop6><FILE>C:\Users\abHelal\Desktop\AssemblyAVR\AtmelStudio_For_Debugging\main.asm</FILE><LINE>309</LINE></loop6>
+  <loop7><FILE>C:\Users\abHelal\Desktop\AssemblyAVR\AtmelStudio_For_Debugging\main.asm</FILE><LINE>338</LINE></loop7>
+  <loop8><FILE>C:\Users\abHelal\Desktop\AssemblyAVR\AtmelStudio_For_Debugging\main.asm</FILE><LINE>340</LINE></loop8>
+  <loop9><FILE>C:\Users\abHelal\Desktop\AssemblyAVR\AtmelStudio_For_Debugging\main.asm</FILE><LINE>343</LINE></loop9>
+  <loop10><FILE>C:\Users\abHelal\Desktop\AssemblyAVR\AtmelStudio_For_Debugging\main.asm</FILE><LINE>372</LINE></loop10>
+  <loop11><FILE>C:\Users\abHelal\Desktop\AssemblyAVR\AtmelStudio_For_Debugging\main.asm</FILE><LINE>396</LINE></loop11>
+ </LABELS>
+</ASSEMBLER_INFO>
